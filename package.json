@@ -1,0 +1,10 @@
+{
+  "name": "hobby-yugioh-ar",
+  "private": true,
+  "type": "module",
+  "description": "Web AR prototype: scan a Yu-Gi-Oh card with an iPhone and a 3D monster appears on it.",
+  "scripts": {
+    "dev": "node tools/dev-server.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
