@@ -5,6 +5,11 @@
   "description": "Web AR prototype: scan a Yu-Gi-Oh card with an iPhone and a 3D monster appears on it.",
   "scripts": {
     "dev": "node tools/dev-server.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "compile-targets": "node tools/compile-targets.mjs targets/cards.mind assets/cards/blue-eyes.jpg assets/cards/dark-magician.jpg"
+  },
+  "devDependencies": {
+    "jpeg-js": "^0.4.4",
+    "mind-ar": "1.2.5"
   }
 }

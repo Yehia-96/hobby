@@ -13,7 +13,6 @@ Screen and it opens full-screen like an app.
 |---|---|
 | `index.html` | The AR app for the phone (camera + card tracking) |
 | `preview.html` | Desktop preview: the same monsters and duel on virtual cards, no camera |
-| `tools/compile-targets.html` | Turns the card images into `targets/cards.mind` for tracking |
 
 ## Run locally
 
@@ -23,18 +22,28 @@ node tools/dev-server.mjs
 
 Then open http://localhost:5173/preview.html. `npm test` runs the duel-rule tests.
 
-## Card recognition setup
+## Card recognition
 
-1. Put card scans in `assets/cards/` (`blue-eyes.jpg`, `dark-magician.jpg`). Use the same
-   artwork as your physical cards, because tracking matches the picture.
-2. Open http://localhost:5173/tools/compile-targets.html and press Compile. It writes
-   `targets/cards.mind`.
+`targets/cards.mind` holds what the tracker looks for, compiled from the scans in
+`assets/cards/` (from YGOPRODeck, original artwork). Tracking matches the picture, so a
+card printed with different art won't be recognised. Replace the scan and recompile:
+
+```bash
+npm install --ignore-scripts
+```
+
+```bash
+npm run compile-targets
+```
+
+`--ignore-scripts` skips an old node-canvas build that mind-ar asks for but doesn't need here.
 
 ## Getting it onto the iPhone
 
 Safari only allows the camera over **https**, so the phone can't use `http://<pc-ip>:5173`.
-Host the folder on any static https host (GitHub Pages, Netlify, Cloudflare Pages) and open
-that address on the phone. Then use Share › Add to Home Screen.
+The site is published with GitHub Pages from the `main` branch, so pushing to `main`
+updates the phone app. On the iPhone, open the Pages URL in Safari, allow the camera, then
+use Share › Add to Home Screen.
 
 ## Layout
 

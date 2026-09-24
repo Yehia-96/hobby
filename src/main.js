@@ -35,7 +35,7 @@ function explain(err) {
 
 async function startAr() {
   const check = await fetch(TARGETS_URL, { method: 'HEAD' });
-  if (!check.ok) throw new Error(`Card targets are missing (${TARGETS_URL}). Run tools/compile-targets.html first.`);
+  if (!check.ok) throw new Error(`Card targets are missing (${TARGETS_URL}). Run npm run compile-targets first.`);
 
   const mindar = new MindARThree({
     container: document.getElementById('ar'),
